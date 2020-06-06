@@ -1,5 +1,6 @@
 package wordPlay.driver;
 import wordPlay.util.FileProcessor;
+import wordPlay.handler.WordRotator;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.*; 
@@ -20,12 +21,33 @@ public class Driver {
 			System.exit(0);
 		}
 		System.out.println("Hello World! Lets get started with the assignment");
-		System.out.println(args[0]);
+		//System.out.println(args[0]);
 
 		try{
           FileProcessor fp= new FileProcessor(args[0]);
-		  System.out.println(fp.poll());
+		  String nextword;
+		  int num;
+		  num=1;
+		  while(num<7){
 		  
+		  nextword=fp.poll();
+		  //System.out.println(nextword.matches("\\d+"));
+		  if(nextword.matches("\\d+(\\.)")){
+			  System.out.println(nextword);
+			  break;
+		  }
+		  if(nextword.contains(".")){
+			  String lastword=nextword.substring(0,nextword.length()-1);
+			  WordRotator new_word= new WordRotator(lastword,num);
+			  break;
+		  }
+		  
+		  else{
+		  WordRotator new_word= new WordRotator(nextword,num);
+		  num++;
+		  
+		 }
+		  }
 		}catch(FileNotFoundException ex){
 			System.out.println("file not found");
 		}
