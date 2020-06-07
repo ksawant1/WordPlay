@@ -1,6 +1,7 @@
 package wordPlay.driver;
 import wordPlay.util.FileProcessor;
 import wordPlay.handler.WordRotator;
+import wordPlay.handler.MetricsCalculator;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.*; 
@@ -28,13 +29,13 @@ public class Driver {
 		  String nextword;
 		  int num;
 		  num=1;
-		  while(num<7){
+		  while(true){
 		  
 		  nextword=fp.poll();
-		  //System.out.println(nextword.matches("\\d+"));
 		  if(nextword.matches("\\d+(\\.)")){
 			  System.out.println(nextword);
 			  break;
+			  
 		  }
 		  if(nextword.contains(".")){
 			  String lastword=nextword.substring(0,nextword.length()-1);
@@ -50,6 +51,31 @@ public class Driver {
 		  }
 		}catch(FileNotFoundException ex){
 			System.out.println("file not found");
+		}
+
+		try{
+		    FileProcessor fp1= new FileProcessor(args[0]);
+			String nextword;
+		    while(true){
+		    nextword=fp1.poll();
+			if(nextword.contains(".")){
+			  String lastword=nextword.substring(0,nextword.length()-1);
+			  MetricsCalculator new_word= new MetricsCalculator(lastword);
+			  break;
+		    }
+		   else
+		     {
+		      MetricsCalculator new_word= new MetricsCalculator(nextword);
+			  }
+		  
+		    }
+		 
+		  
+
+		}catch(FileNotFoundException ex){
+			System.out.println("file not found");
+
+
 		}
 
 
