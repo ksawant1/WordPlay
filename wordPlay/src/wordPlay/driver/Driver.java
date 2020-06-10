@@ -1,5 +1,6 @@
 package wordPlay.driver;
 import wordPlay.util.FileProcessor;
+import wordPlay.util.Results;
 import wordPlay.handler.WordRotator;
 import wordPlay.handler.MetricsCalculator;
 import java.io.FileNotFoundException;
@@ -26,46 +27,63 @@ public class Driver {
 
 		try{
           FileProcessor fp= new FileProcessor(args[0]);
+		  WordRotator new_word= new WordRotator();
+		  Results resultantword=new Results();
 		  String nextword;
 		  int num;
 		  num=1;
+		  int num1;
 		  while(true){
-		  
 		  nextword=fp.poll();
-		  if(nextword.matches("\\d+(\\.)")){
-			  System.out.println(nextword);
-			  break;
+	      if((nextword.length()<num) && !(nextword.contains("."))){
 			  
+			  num1=num-nextword.length();
+			  new_word.Wordr(nextword,num1);
+			  num=num+1;
+	
+
 		  }
 		  if(nextword.contains(".")){
-			  String lastword=nextword.substring(0,nextword.length()-1);
-			  WordRotator new_word= new WordRotator(lastword,num);
-			  break;
+			  
+			  if(nextword.length()<=num){
+			  num1=num-nextword.length()+1;
+			  new_word.Wordr(nextword,num1);
+
+			  break;}
+			  else{
+				  new_word.Wordr(nextword,num);
+				  break;
+			  }
 		  }
-		  
-		  else{
-		  WordRotator new_word= new WordRotator(nextword,num);
+		  else if(nextword.length()>=num){
+			  
+	      new_word.Wordr(nextword,num);
 		  num++;
 		  
 		 }
+
 		  }
+		  
+		resultantword.writeToFile();
 		}catch(FileNotFoundException ex){
 			System.out.println("file not found");
 		}
 
 		try{
 		    FileProcessor fp1= new FileProcessor(args[0]);
+			MetricsCalculator new_word= new MetricsCalculator();
 			String nextword;
+			int count=1;
 		    while(true){
 		    nextword=fp1.poll();
 			if(nextword.contains(".")){
-			  String lastword=nextword.substring(0,nextword.length()-1);
-			  MetricsCalculator new_word= new MetricsCalculator(lastword);
+			  new_word.MetricsC(nextword,count);
 			  break;
 		    }
 		   else
 		     {
-		      MetricsCalculator new_word= new MetricsCalculator(nextword);
+		     new_word.MetricsC(nextword,count);
+			  count++;
 			  }
 		  
 		    }
@@ -77,6 +95,8 @@ public class Driver {
 
 
 		}
+		
+
 
 
 	}
