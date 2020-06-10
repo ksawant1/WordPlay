@@ -2,57 +2,34 @@ package wordPlay.handler;
 
 public final class MetricsCalculator {
 
-    private int count;
-    int j;
-    int length=0;
-    private int result;
-    
-    //j=9;
+     int charl;
 
-    public MetricsCalculator(String word){
+    public void MetricsC(String word,int count){
+             if(word.contains(".")){
+                 word=word.substring(0,word.length()-1);
+                 int val=calavg(word);
+                 avg_cal(val,count);
 
-
-               j=9;
-			  count=0;
-              /*
-              if(word.contains(".")){
-        
-                  
-                  String lastword=word.substring(0,word.length()-1);
-                 
-                   int val=calavg(lastword);
-                   
-                   System.out.println(val);
-                   
-                    
-                    //result=0;
-              }
-              else{*/
-                  
-                  
+             }
+             else{
+              
                   int val=calavg(word);
-                  
-                  result=result+val;
-                  System.out.println(val);
-                  
-              //}
-             
-              }
+              }}
               
               public int calavg(String word){
-              for(int i=0;i<word.length();i++){
-                  
+              for(int i=0;i<word.length();i++){ 
                      if(word.charAt(i)!=' '){
-                  count=count+1;
-                  }
+                  charl=charl+1;
+                  }   
                   
-
-                   
-                  
-              }return count;}
+              }return charl;}
 
               
-			 // break;
+			 public void avg_cal(int val, int count){
+                 float input=val/count;
+                 System.out.println(count);
+                 System.out.println(String.format("%.2f",input));
+             }
 		  
           
     
