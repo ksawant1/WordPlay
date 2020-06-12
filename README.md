@@ -1,6 +1,7 @@
 # CSX42: Assignment 1
-## Name: 
-
+## Name: Krupa Sawant
+## BU Id: B00 814013
+Use of 1 SLACK DAY
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
 
@@ -33,6 +34,16 @@ Note: Arguments accept the absolute path of the files.
 
 -----------------------------------------------------------------------
 ## Description:
+WordRotator class takes an individual word and position of the word and rotates it
+wrt corresponding index while checking for boundary conditions and end of sentence(".").
+MetricsCalculator takes an individual words, computes the number of characters in every word
+and measures average word length and number of words in a sentence.
+Results class prints the resulant output onto standard console and respective files.
+
+Data structure used to store and entire resultant sentence is array list.
+The reason array list is used:
+It's a resizable array, can add or remove elements anytime without defining a fixed size 
+which helps in saving memory and time.
 
 
 -----------------------------------------------------------------------
@@ -45,6 +56,6 @@ I am involved in plagiarism or cheating an official form will be
 submitted to the Academic Honesty Committee of the Watson School to
 determine the action that needs to be taken. "
 
-Date: [ADD_DATE_HERE]
+Date: [6/12/2020]
 
 
